@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Web Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        label, select, input { margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Web Calculator</h1>
+    <input type="number" id="x" placeholder="First number">
+    <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="number" id="y" placeholder="Second number">
+    <button onclick="calculate()">=</button>
+    <span id="result"></span>
+
+    <script>
+        function calculate() {
+            var x = parseFloat(document.getElementById('x').value);
+            var y = parseFloat(document.getElementById('y').value);
+            var op = document.getElementById('op').value;
+            var result;
+
+            if (op === '+') {
+                result = x + y;
+            } else if (op === '-') {
+                result = x - y;
+            } else if (op === '*') {
+                result = x * y;
+            } else if (op === '/') {
+                if (y === 0) {
+                    result = 'Error: divide by zero';
+                } else {
+                    result = x / y;
+                }
+            }
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+</body>
+</html>
